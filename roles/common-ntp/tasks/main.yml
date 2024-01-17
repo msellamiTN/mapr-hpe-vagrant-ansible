@@ -1,9 +1,11 @@
 ---
 - name: Install NTP
+  become: true 
   package: name=ntp state=present
 
 # ntp can't start in a container, hence no molecule tests
 - name: Start the ntp service
+  become: true 
   vars:
     service_Suse: ntpd
     service_RedHat: ntpd

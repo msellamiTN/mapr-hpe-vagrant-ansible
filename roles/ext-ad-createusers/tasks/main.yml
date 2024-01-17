@@ -4,8 +4,10 @@
 #- name: Set certs in /etc/openldap/ldap.conf
 #  lineinfile: dest=/etc/openldap/ldap.conf regexp="^tls_cacertfile" line="tls_cacertfile /etc/openldap/certserver01.cer"
 - name: Copy helper JAR to write AD password
+  become: true  
   copy: src=ad-change-pwd-0.1.jar dest=/tmp/ad-change-pwd-0.1.jar
 - name: Create kerberos user for cluster
+  become: true   
   ldap_entry:
     dn: "CN={{ mapr_user_cldb_principal }}-{{ cluster_name }},{{ mapr_kerberos_ad_user_cn }}"
     state: present
@@ -30,9 +32,11 @@
     bind_pw: "{{ mapr_kerberos_admin_bind_pw }}"
   when: inventory_hostname == groups["ext-kerberos"][0]
 - name: Set password for cluster user
+  become: true  
   command: "java -jar /tmp/ad-change-pwd-0.1.jar {{ mapr_kerberos_kdc }} 636 '{{ mapr_kerberos_admin_bind_dn }}' '{{ mapr_kerberos_admin_bind_pw }}' 'CN={{ mapr_user_cldb_principal }}-{{ cluster_name }},{{ mapr_kerberos_ad_user_cn }}' '{{ mapr_kerberos_keytab_passwd }}'"
   when: inventory_hostname == groups["ext-kerberos"][0]
 - name: Create kerberos users
+  become: true  
   vars:
     kerbusers: ["{{ mapr_user }}", "HTTP"]
   ldap_entry:
@@ -59,6 +63,7 @@
     bind_pw: "{{ mapr_kerberos_admin_bind_pw }}"
   with_items: "{{ kerbusers }}"
 - name: Set password for cluster user
+  become: true  
   vars:
     kerbusers: ["{{ mapr_user }}", "HTTP"]
   command: "java -jar /tmp/ad-change-pwd-0.1.jar {{ mapr_kerberos_kdc }} 636 '{{ mapr_kerberos_admin_bind_dn }}' '{{ mapr_kerberos_admin_bind_pw }}' 'CN={{ item }}-{{ ansible_hostname }},{{ mapr_kerberos_ad_user_cn }}' '{{ mapr_kerberos_keytab_passwd }}'"

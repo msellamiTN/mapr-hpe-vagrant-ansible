@@ -1,24 +1,30 @@
 ---
 # Install Anaconda
 - name: Install BZip2
+  become: true  
   package: name=bzip2 state=present
 - name: Override Anaconda default config to access local repository.
+  become: true  
   template: src=condarc dest=~/.condarc
 #  become: true
 #  become_user: "{{ mapr_user }}"
 - name: Install Anaconda (Python)
+  become: true  
   shell: "{{ anaconda_install_binary }} -u -b -p {{ anaconda_install_path }}"
 #  become: true
 #  become_user: "{{ mapr_user }}"
 - name: Build index for custom repo
+  become: true  
   shell: "{{ anaconda_install_path }}/bin/conda index {{ anaconda_custom_repo_path }}/linux-64/"
 #  become: true
 #  become_user: "{{ mapr_user }}"
 - name: Delete Python environment for re-creation
+  become: true  
   file: dest="{{ anaconda_install_path }}/envs/{{ anaconda_env_name }}" state=absent
 #  become: true
 #  become_user: "{{ mapr_user }}"
 - name: Create Python environment
+  become: true  
   shell: "{{ anaconda_install_path }}/bin/conda create --offline --name {{ anaconda_env_name }} python={{ anaconda_python_version }} {{ anaconda_packages }}"
 #  become: true
 #  become_user: "{{ mapr_user }}"

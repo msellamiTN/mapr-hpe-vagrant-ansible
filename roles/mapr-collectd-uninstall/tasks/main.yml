@@ -1,6 +1,7 @@
 ---
 # Uninstall MapR collectd
 - name: Stop Collectd
+  become: true 
   shell: "maprcli node services -name collectd -action stop -nodes {{ ansible_fqdn }}"
   register: maprcli_result
   failed_when: maprcli_result.rc > 1
@@ -8,4 +9,5 @@
   environment:
     MAPR_TICKETFILE_LOCATION: /opt/mapr/conf/mapruserticket
 - name: Uninstall mapr-collectd
+  become: true 
   package: name=mapr-collectd state=absent

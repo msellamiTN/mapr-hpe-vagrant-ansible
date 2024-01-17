@@ -1,0 +1,245 @@
+# Define groups
+# inventory/hosts
+[all]
+mapr-edge   MAPR_UID=1001 MAPR_GID=1001 MAPR_USER=mapr ansible_host=127.0.0.1 ansible_port=2220 ansible_user=vagrant ansible_ssh_private_key_file=/home/user2/mapr-cluster/.ssh/id_rsa ansible_become=yes ansible_become_method=sudo
+mapr-master   MAPR_UID=1001 MAPR_GID=1001 MAPR_USER=mapr ansible_host=127.0.0.1 ansible_port=2221 ansible_user=vagrant ansible_ssh_private_key_file=/home/user2/mapr-cluster/.ssh/id_rsa ansible_become=yes ansible_become_method=sudo
+mapr-worker1   MAPR_UID=1001 MAPR_GID=1001 MAPR_USER=mapr ansible_host=127.0.0.1  ansible_port=2200 ansible_user=vagrant ansible_ssh_private_key_file=/home/user2/mapr-cluster/.ssh/id_rsa ansible_become=yes ansible_become_method=sudo
+mapr-worker2   MAPR_UID=1001 MAPR_GID=1001 MAPR_USER=mapr ansible_host=127.0.0.1  ansible_port=2223 ansible_user=vagrant ansible_ssh_private_key_file=/home/user2/mapr-cluster/.ssh/id_rsa ansible_become=yes ansible_become_method=sudo
+mapr-worker3   MAPR_UID=1001 MAPR_GID=1001 MAPR_USER=mapr ansible_host=127.0.0.1  ansible_port=2224 ansible_user=vagrant ansible_ssh_private_key_file=/home/user2/mapr-cluster/.ssh/id_rsa ansible_become=yes ansible_become_method=sudo
+
+[unprovision]
+
+[common]
+mapr-master
+mapr-worker1 
+mapr-worker2  
+mapr-worker3  
+[mapr-core]
+mapr-master
+mapr-worker1 
+mapr-worker2  
+mapr-worker3  
+
+# Zookeeper
+[mapr-zookeeper]
+mapr-master
+mapr-worker1 
+mapr-worker2  
+mapr-worker3   
+# Contains MapR FileServer (MFS)
+[mapr-fileserver]
+mapr-master
+mapr-worker1 
+mapr-worker2  
+mapr-worker3   
+# Container Location DataBase
+[mapr-cldb]
+mapr-master
+mapr-worker1 
+mapr-worker2  
+# Kafka API for MapR-Streams
+[mapr-kafka]
+mapr-master
+mapr-worker1 
+mapr-worker2  
+
+# Gateway for Streams and MapR-DB
+[mapr-gateway]
+mapr-master
+mapr-worker1 
+mapr-worker2  
+
+[mapr-mastgateway]
+mapr-worker2  
+
+# MapR Control System
+[mapr-mcs]
+mapr-master
+
+# YARN resource manager
+[mapr-resourcemanager]
+mapr-master
+
+# Contains YARN Node Manager
+[mapr-nodemanager]
+mapr-worker1 
+mapr-worker2  
+mapr-worker3  
+# Job History Server, IMPORTANT: only one
+[mapr-historyserver]
+mapr-master
+
+# MySQL, required for Hive MetaStore and Oozie, IMPORTANT: only one
+[ext-mysql]
+mapr-master
+
+# Spark on YARN
+[mapr-spark-yarn]
+mapr-master
+mapr-worker1 
+mapr-worker2 
+mapr-worker3   
+
+# Spark ThriftServer
+[mapr-spark-thriftserver]
+mapr-master 
+
+# Spark HistoryServer
+[mapr-spark-historyserver]
+mapr-master
+
+# NFS
+[mapr-nfs-v3]
+mapr-master
+mapr-worker1 
+mapr-worker2  
+mapr-worker3
+# MapR Fuse Posix Client Basic
+[mapr-posix-client-basic]
+mapr-master
+mapr-worker1 
+mapr-worker2  
+mapr-worker3
+# MapR Fuse Posix Client Platinum
+[mapr-posix-client-platinum]
+
+
+# Apache Drill
+[mapr-drill-standalone]
+mapr-master
+mapr-worker1 
+mapr-worker2  
+mapr-worker3
+# Apache Drill
+[mapr-drill-yarn]
+
+# Flume
+[mapr-flume]
+#mapr-master
+#mapr-worker1 
+#mapr-worker2  
+
+# HBase CLI
+[mapr-hbase-cli]
+mapr-master
+mapr-worker1 
+mapr-worker2  
+mapr-worker3
+# HBase REST and Thrift
+[mapr-hbase-thrift-rest]
+#mapr-master
+
+# Hive CLI
+[mapr-hive-cli]
+mapr-master
+mapr-worker1 
+mapr-worker2  
+mapr-worker3
+# Hive Meta Store
+[mapr-hive-metastore]
+mapr-master
+mapr-worker1 
+mapr-worker2  
+mapr-worker3
+# Hive Server2
+[mapr-hive-server2]
+mapr-master
+mapr-worker1 
+
+# Hive WebHCat
+[mapr-hive-webhcat]
+#mapr-master
+
+# HttpFS
+[mapr-httpfs]
+#mapr-master
+#mapr-worker1 
+
+[mapr-hue]
+mapr-edge   
+
+# Sqoop1
+[mapr-sqoop1]
+#mapr-master
+#mapr-worker1 
+#mapr-worker2  
+
+# Sqoop2 Server
+[mapr-sqoop2-server]
+mapr-worker1 
+
+# Sqoop2 Client
+[mapr-sqoop2-client]
+#mapr-master
+#mapr-worker1 
+#mapr-worker2  
+
+# Pig
+[mapr-pig]
+#mapr-master
+#mapr-worker1 
+#mapr-worker2  
+
+# Oozie
+[mapr-oozie]
+#mapr-worker1 
+
+# File Migrate Service
+[mapr-filemigrate]
+#mapr-worker2  
+
+[mapr-impala-server]
+#mapr-master
+#mapr-worker1 
+#mapr-worker2  
+
+[mapr-impala-catalog]
+#mapr-master
+
+[mapr-impala-statestore]
+#mapr-worker1 
+
+[mapr-kafka-connect-jdbc]
+#mapr-worker1 
+
+[mapr-kafka-rest]
+#mapr-master
+
+[mapr-kafka-ksql]
+#mapr-master
+#mapr-worker1 
+#mapr-worker2  
+
+[mapr-data-access-gateway]
+#mapr-worker2  
+
+# CollectD
+[mapr-collectd:children]
+#mapr-core
+
+# OpenTSDB
+[mapr-opentsdb]
+#mapr-master
+
+# Custom OpenTSDB, do NOT install on same node as mapr-opentsdb
+[mapr-opentsdb-custom]
+#mapr-worker1 
+
+# Grafana
+[mapr-grafana]
+#mapr-master
+
+# FluentD
+[mapr-fluentd:children]
+#mapr-core
+
+# ElasticSearch
+[mapr-elasticsearch]
+mapr-worker1 
+mapr-worker2  
+
+# Kibana
+[mapr-kibana]
+mapr-worker2  
+
+

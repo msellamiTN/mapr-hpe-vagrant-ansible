@@ -1,17 +1,18 @@
 ---
-- name: Install misc stuff - Midnight commander, wget, Python MySQL, openssl
+- name: Update package cache
+  become: true
+  ansible.builtin.apt:
+    update_cache: yes
+    cache_valid_time: 3600 # 1 hour
+  when: ansible_os_family == 'Debian'
+
+- name: Install miscellaneous packages - Midnight commander, wget, Python MySQL, openssl
+  become: true 
   vars:
-    packages_Suse: ['mc', 'wget', 'python-mysql', 'openssl']
-    packages_RedHat: ['mc', 'wget', 'MySQL-python',
-                      'yum-utils', 'unzip', 'openssl',
-                      'syslinux', 'sdparm', 'hdparm',
-                      'redhat-lsb-core', 'lsof']
-    # syslinux-utils is for gethostip, libpython is required for collectd
-    packages_Debian: ['mc',
-                      'wget',
-                      'python-mysqldb',
-                      'openssl',
-                      'syslinux-utils',
-                      'libpython2.7']
-  package: name={{ item }} state=present
+    packages_Suse: ['mc', 'wget', 'python3-mysql', 'openssl'] # Ensure this is the correct package name for Suse
+    packages_RedHat: ['mc', 'wget', 'python3-mysql', 'yum-utils', 'unzip', 'openssl', 'syslinux', 'sdparm', 'hdparm', 'redhat-lsb-core', 'lsof']
+    packages_Debian: ['mc', 'wget', 'python3-mysqldb', 'openssl', 'syslinux-utils', 'libpython3.8'] # Update libpython for the correct Python 3 version
+  package:
+    name: "{{ item }}"
+    state: present
   with_items: "{{ vars['packages_' + ansible_os_family] }}"

@@ -1,17 +1,25 @@
-mapr_release_url: http://package.mapr.com/releases/v6.1.0
-mapr_ecosystem_url: http://package.mapr.com/releases/MEP/MEP-6.1.0/
-mapr_gpg_url: http://package.mapr.com/releases/pub/maprgpg.key
+mapr_release_url: https://package.ezmeral.hpe.com/releases/v7.5.0
+mapr_ecosystem_url: https://package.ezmeral.hpe.com/releases/MEP/MEP-9.2.0/
+#https://package.ezmeral.hpe.com/releases/MEP/MEP-<version>/
+mapr_gpg_key_url: https://package.ezmeral.hpe.com/releases/pub/maprgpg.key
+mapr_gpg_url: https://package.ezmeral.hpe.com/releases/pub/maprgpg.key
 mapr_gpg_check: yes
-
+mapr_email: mokhtar.sellami@data2-ai.com
+mapr_token: Inj3Thgrly3VI2Ycj3elCXExBz5UMsksbi1zl9qNLu4xNL80WVVi6n7MNKFlT4hJ1NkOOi8OIO9kBqnkosE6WQ
 # JDK choose: openjdk18 or oraclejdk18
-jdk: openjdk18
+jdk: openjdk11
 #jdk_folder: /opt/java/jdk1.8.0_111
 # redhat openjdk java path
-jdk_folder: /usr/lib/jvm/java-1.8.0-openjdk-1.8.0.121-0.b13.el7_3.x86_64
+#jdk_folder: /usr/lib/jvm/java-1.8.0-openjdk-1.8.0.121-0.b13.el7_3.x86_64
+jdk_folder : /usr/lib/jvm/java-11-openjdk-amd64
 oracle_jdk_url: http://download.oracle.com/otn-pub/java/jdk/8u144-b01/090f390dda5b47b9b721c7dfaa008135/jdk-8u144-linux-x64.tar.gz
 use_ntp: True
 
-hadoop_version: 2.7.0
+data_fabric_version: "7.5.0"
+mep_version : "9.2.0"
+ubuntu_codename : "bionic"
+
+hadoop_version: 3.3.5
 cluster_name: demo.mapr.com
 # required when aborted in wrong stage or changing security type
 force_zookeeper_restart: True

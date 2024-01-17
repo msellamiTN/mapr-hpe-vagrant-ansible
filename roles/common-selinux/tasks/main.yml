@@ -1,5 +1,6 @@
 ---
 - name: Install required Ansible package to handle SElinux
+  become: true 
   package: name=libselinux-python state=present
   when: ansible_os_family != 'Suse'
 - name: Disable SElinux

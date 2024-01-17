@@ -2,10 +2,12 @@
 # Install MapR Client
 
 - name: Install mapr-client
+  become: true 
   package: name=mapr-client state=present
 
 # Required for Spark
 - name: YARN proxy Jar
+  become: true 
   copy: src="{{ local_tmp_path }}/{{ item | basename }}" dest="/opt/mapr/hadoop/hadoop-{{ hadoop_version }}/share/hadoop/yarn/"
   with_items: "{{ hostvars[groups['mapr-cldb'][0]].yarnserver_jars_list }}" # set in mapr-client-configure-nativesecurity-fetch
 

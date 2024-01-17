@@ -1,6 +1,7 @@
 ---
 # Oracle JDK playbook
 - name: Downloading Java JDK
+  become: true  
   get_url:
     url: "{{oracle_jdk_url}}"
     force: true
@@ -10,22 +11,26 @@
     timeout: 120
 
 - name: Create /opt/java
+  become: true  
   file:
     path: /opt/java
     mode: 0755
     state: directory
 - name: Install Java JDK
+  become: true  
   unarchive:
     src: /tmp/oracle-jdk.tar.gz
     dest: /opt/java
     copy: false
 - name: Create link /usr/bin/java
+  become: true  
   file:
     src: "{{jdk_folder}}/bin/java"
     dest: /usr/bin/java
     state: link
 # Other actions
 - name: Copy Local Policy
+  become: true  
   copy:
     src: "../files/UnlimitedJCEPolicyJDK8/local_policy.jar"
     dest: "{{jdk_folder}}/jre/lib/security/"
@@ -36,6 +41,7 @@
 #    dest: "{{jdk_folder}}/jre/lib/security/"
 #    mode: 0644
 - name: Add JAVA_HOME to /etc/profile
+  become: true  
   lineinfile:
     dest: /etc/profile
     state: present

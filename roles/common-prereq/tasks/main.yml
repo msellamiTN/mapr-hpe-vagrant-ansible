@@ -1,9 +1,37 @@
 ---
 - name: Check operation system
+  become: true 
   fail: msg="Only Suse, Debian, Ubuntu, RedHat and CentOS are supported"
   when: ansible_os_family not in ["Suse", "RedHat", "Debian"]
+- name: Update package cache
+  become: true
+  ansible.builtin.apt:
+    update_cache: yes
+    cache_valid_time: 3600 # 1 hour
+  when: ansible_os_family == 'Debian'
+- name: Check for running unattended upgrades
+  shell: pgrep -f apt
+  register: pgrep_apt
+  failed_when: false
+  changed_when: false
+  ignore_errors: true
+
+- name: Remove the APT lock file
+  file:
+    path: "{{ item }}"
+    state: absent
+  with_items:
+    - /var/lib/apt/lists/lock
+    - /var/cache/apt/archives/lock
+    - /var/lib/dpkg/lock
+  when: pgrep_apt.rc != 0
+
+- name: Reconfigure packages
+  command: dpkg --configure -a
+  when: pgrep_apt.rc != 0
 
 - name: Ensure permissions for PAM config /etc/pam.d/system-auth-pc
+  become: true 
   file:
     path: /etc/pam.d/system-auth-pc
     state: directory
@@ -11,6 +39,7 @@
   when: ansible_os_family == 'RedHat'
 
 - name: Retrieve info for zkdata directory
+  become: true 
   stat: path=/opt/mapr/zkdata
   register: zkdataDir
 - name: Ensure owner mapr:mapr for /opt/mapr/zkdata if directory already exists
@@ -20,3 +49,4 @@
     owner: "{{ mapr_user }}"
     group: "{{ mapr_group }}"
   when: zkdataDir.stat.isdir is defined and zkdataDir.stat.isdir
+ 

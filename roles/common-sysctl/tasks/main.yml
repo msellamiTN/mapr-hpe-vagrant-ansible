@@ -2,6 +2,7 @@
 # Cannot use Ansible sysctl feature in docker, harder to test with molecule
 # https://docs.ansible.com/ansible/2.5/modules/sysctl_module.html?highlight=sysctl
 - name: Set vm.swappiness in /etc/sysctl.conf
+  become: true  
   lineinfile:
     dest: /etc/sysctl.conf
     regexp: "{{item.regex}}"

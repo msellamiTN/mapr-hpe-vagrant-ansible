@@ -2,4 +2,5 @@
 # Install MapR collectd
 
 - name: Install mapr-collectd
+  become: true 
   package: name=mapr-collectd state=present

@@ -18,6 +18,7 @@
 # used by configure.sh and drill
 - name: Setup global vars
   hosts: all
+  become: true
   roles:
     - ../roles/mapr-global-vars
     - ../roles/mapr-configure-vars-zk
@@ -25,6 +26,7 @@
     - ../roles/mapr-configure-vars-rm
     - ../roles/mapr-configure-vars-hs
 - name: Install MapR Core
+  become: true
   hosts: mapr-core
   roles:
     - ../roles/mapr-core-install

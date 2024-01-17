@@ -3,6 +3,7 @@
 - name: Check for mapr-clusters.conf
   stat: path=/opt/mapr/conf/mapr-clusters.conf
   register: clusters_conf
+  become: true
 - name: Stop MAST Gateway
   shell: "maprcli node services -name mastgateway -action stop -nodes {{ ansible_fqdn }}"
   register: maprcli_result
@@ -11,5 +12,8 @@
   environment:
     MAPR_TICKETFILE_LOCATION: /opt/mapr/conf/mapruserticket
   when: clusters_conf.stat.exists
+  become: true
 - name: Uninstall mapr-mastgateway
   package: name=mapr-mastgateway state=absent
+  become: true
+  

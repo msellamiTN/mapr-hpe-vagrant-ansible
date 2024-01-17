@@ -1,11 +1,13 @@
 ---
 
 - name: Create MapR Group
+  become: true 
   group:
     name: "{{ mapr_group }}"
     gid: "{{ mapr_group_gid }}"
     state: present
 - name: Create MapR User
+  become: true 
   user:
     name: "{{ mapr_user }}"
     comment: "MapR default user"

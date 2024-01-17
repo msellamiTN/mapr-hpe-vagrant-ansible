@@ -1,9 +1,11 @@
 ---
 # Uninstall CLDB
 - name: Check for mapr-clusters.conf
+  become: true 
   stat: path=/opt/mapr/conf/mapr-clusters.conf
   register: clusters_conf
 - name: Stop CLDB
+  become: true 
   shell: "maprcli node services -name cldb -action stop -nodes {{ ansible_fqdn }}"
   register: maprcli_result
   failed_when: maprcli_result.rc > 1
@@ -12,6 +14,7 @@
     MAPR_TICKETFILE_LOCATION: /opt/mapr/conf/mapruserticket
   when: clusters_conf.stat.exists
 - name: Uninstall mapr-cldb
+  become: true 
   package: name=mapr-cldb state=absent
   register: cldb_result
 - set_fact: cldb_haschanged="{{ cldb_haschanged | int + 1 }}"

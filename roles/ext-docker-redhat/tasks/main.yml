@@ -1,8 +1,10 @@
 ---
 - name: Add Docker GPG key
+  become: true  
   rpm_key: key="{{ docker_gpg_key }}" state=present
 
 - name: Add Docker repository
+  become: true  
   get_url:
     url: "{{ docker_yum_repo_url }}"
     dest: '/etc/yum.repos.d/docker-ce.repo'
@@ -18,33 +20,42 @@
 #    value: '{{ docker_yum_repo_enable_edge }}'
 
 - name: Install container-selinux from CentOS
+  become: true  
   package: name="{{ container_selinux_url }}"
   when: ansible_distribution == 'Red Hat Enterprise Linux'
 
 - name: Install Docker
+  become: true  
   package: name=docker-ce state=present
 
 - name: Enable Docker Service at boot
+  become: true  
   service: name=docker state=started enabled=true
 
 - name: Add users to Docker group
+  become: true  
   user: name="{{ item }}" groups=docker append=true
   with_items: "{{ docker_users }}"
 
 - name: Remove python-requests, because it conflicts with PIP
+  become: true  
   package: name=python-requests state=absent
 
 - name: Download get-pip.py
+  become: true  
   get_url:
     url: https://bootstrap.pypa.io/get-pip.py
     dest: /tmp/get-pip.py
     mode: 0755
 
 - name: Install PIP
+  become: true  
   shell: "python /tmp/get-pip.py"
 
 - name: Install Python Docker module
+  become: true  
   pip: name=docker
 
 - name: Restart docker
+  become: true  
   service: name=docker state=restarted

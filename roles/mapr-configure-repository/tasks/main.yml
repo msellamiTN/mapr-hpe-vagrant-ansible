@@ -1,88 +1,117 @@
----
+- name: Remove existing GPG key file if it exists
+  become: true
+  ansible.builtin.file:
+    path: "/tmp/maprgpg.key"
+    state: absent
+  when: ansible_os_family in ['RedHat', 'Debian']
 
-# RedHat / CentOS
+- name: Download the MapR GPG Key for RedHat
+  become: true
+  ansible.builtin.get_url:
+    url: "{{ mapr_gpg_key_url }}"
+    dest: "/tmp/maprgpg.key"
+    headers:
+      Authorization: "Basic {{ (mapr_email + ':' + mapr_token) | b64encode }}"
+  when: ansible_os_family == 'RedHat'
+- name: Remove broken repository from sources.list
+  become: true
+  ansible.builtin.lineinfile:
+    path: /etc/apt/sources.list
+    regexp: 'deb https://package.ezmeral.hpe.com/releases/'
+    state: absent
+  when: ansible_distribution == "Ubuntu"
+
+- name: Remove broken MEP repository from sources.list
+  become: true
+  ansible.builtin.lineinfile:
+    path: /etc/apt/sources.list
+    regexp: 'deb https://package.ezmeral.hpe.com/releases/MEP'
+    state: absent
+  when: ansible_distribution == "Ubuntu"
+
+
+- name: Update package cache
+  become: true
+  apt:
+    update_cache: yes
+  when: ansible_os_family == 'Debian' 
+
 - name: Import RPM key for RedHat
-  rpm_key: state=present key={{ mapr_gpg_url }}
+  become: true
+  ansible.builtin.rpm_key:
+    state: present
+    key: "/tmp/maprgpg.key"
   when: ansible_os_family == 'RedHat'
-- name: Create MapR Releases Repository for RedHat
-  yum_repository:
-    name: maprtech
-    description: MapR Technologies
-    file: external_repos
-    baseurl: "{{ mapr_release_url }}/redhat/"
-    gpgcheck: "{{ mapr_gpg_check }}"
-    gpgkey: "{{ mapr_gpg_url }}"
-  when: ansible_os_family == 'RedHat'
-- name: Create MapR Ecosystem Repository for RedHat
-  yum_repository:
-    name: maprecosystem
-    description: MapR Technologies
-    file: external_repos
-    baseurl: "{{ mapr_ecosystem_url }}/redhat/"
-    gpgcheck: "{{ mapr_gpg_check }}"
-    gpgkey: "{{ mapr_gpg_url }}"
-  when: ansible_os_family == 'RedHat'
-#- name: Create MapR Patch Repository for RedHat
-#  yum_repository:
-#    name: maprpatch
-#    description: MapR Technologies
-#    file: external_repos
-#    baseurl: "{{ mapr_patch_url }}/redhat/"
-#    gpgcheck: "{{ mapr_gpg_check }}"
-#    gpgkey: "{{ mapr_gpg_url }}"
-#  when: ansible_os_family == 'RedHat' and mapr_patch_url is defined
 
-# Ubuntu / Debian
-- name: Import RPM key for Ubuntu
-  apt_key: state=present url={{ mapr_gpg_url }}
-  when: ansible_os_family == 'Debian'
-- name: Create MapR Releases Repository for Ubuntu
-  apt_repository:
-    repo: "deb {{ mapr_release_url }}/ubuntu/ binary trusty"
-    state: present
-    update_cache: yes
-    validate_certs: "{{ mapr_gpg_check }}"
-  when: ansible_os_family == 'Debian'
-- name: Create MapR Ecosystem Repository for Ubuntu
-  apt_repository:
-    repo: "deb {{ mapr_ecosystem_url }}/ubuntu/ binary trusty"
-    state: present
-    update_cache: yes
-    validate_certs: "{{ mapr_gpg_check }}"
-  when: ansible_os_family == 'Debian'
-#- name: Create MapR Patch Repository for Ubuntu
-#  apt_repository:
-#    repo: "deb {{ mapr_patch_url }}/ubuntu/ dists binary"
-#    state: present
-#    update_cache: yes
-#    validate_certs: yes
-#  when: ansible_os_family == 'Debian' and mapr_patch_url is defined
-- name: Update cache for Ubuntu
-  apt: update_cache=yes
+- name: Download the MapR GPG Key for Ubuntu
+  become: true
+  ansible.builtin.get_url:
+    url: "{{ mapr_gpg_key_url }}"
+    dest: "/tmp/maprgpg.key"
+    headers:
+      Authorization: "Basic {{ (mapr_email + ':' + mapr_token) | b64encode }}"
   when: ansible_os_family == 'Debian'
 
-# Suse
-- name: Import RPM key for Suse
-  rpm_key: state=present key={{ mapr_gpg_url }}
-  when: ansible_os_family == 'Suse'
-- name: Create MapR Releases Repository for Suse
-  zypper_repository:
-    name: maprtech
-    repo: "{{ mapr_release_url }}/suse/"
-    disable_gpg_check: "{{ 'no' if mapr_gpg_check == 'yes' else 'no' }}"
+- name: Add the MapR GPG Key for Ubuntu
+  become: true
+  ansible.builtin.command:
+    cmd: apt-key add /tmp/maprgpg.key
+  become: true
+  when: ansible_os_family == 'Debian'
+- name: Create apt auth.conf for Data Fabric Repository
+  become: true
+  ansible.builtin.copy:
+    dest: /etc/apt/auth.conf.d/package.ezmeral.hpe.com.conf
+    content: |
+      machine package.ezmeral.hpe.com
+      login {{ mapr_email }}
+      password {{ mapr_token }}
+  become: true
+  when: ansible_os_family == 'Debian'
+- name: Add Data Fabric Release Repository to sources.list
+  become: true
+  ansible.builtin.lineinfile:
+    path: /etc/apt/sources.list
+    line: "deb {{ mapr_release_url }}/ubuntu/ binary bionic"
+    create: yes
+  become: true
+  when: ansible_os_family == 'Debian'
+
+- name: Add Data Fabric Ecosystem Repository to sources.list
+  become: true
+  ansible.builtin.lineinfile:
+    path: /etc/apt/sources.list
+    line: "deb {{ mapr_ecosystem_url }}/ubuntu/ binary bionic"
+    create: yes
+  become: true
+  when: ansible_os_family == 'Debian'
+- name: Update apt package indexes
+  become: true
+  ansible.builtin.apt:
+    update_cache: yes
+  become: true
+  when: ansible_os_family == 'Debian'
+
+
+
+- name: Add Data Fabric repository to sources.list
+  become: true
+  ansible.builtin.blockinfile:
+    path: /etc/apt/sources.list
+    block: |
+      deb https://package.ezmeral.hpe.com/releases/v{{ data_fabric_version }}/ubuntu/ binary  bionic
+      deb https://package.ezmeral.hpe.com/releases/MEP/MEP-{{ mep_version }}/ubuntu/ binary bionic
+    marker: "# {mark} ANSIBLE MANAGED BLOCK - HPE Data Fabric"
+  when: ansible_distribution == "Ubuntu"
+
+- name: Update apt package index
+  become: true
+  ansible.builtin.apt:
+    update_cache: yes
+  when: ansible_distribution == "Ubuntu"
+  
+- name: Ensure syslinux is installed
+  become: true
+  ansible.builtin.package:
+    name: syslinux
     state: present
-  when: ansible_os_family == 'Suse'
-- name: Create MapR Ecosystem Repository for Suse
-  zypper_repository:
-    name: maprecosystem
-    repo: "{{ mapr_ecosystem_url }}/suse/"
-    disable_gpg_check: "{{ 'no' if mapr_gpg_check == 'yes' else 'no' }}"
-    state: present
-  when: ansible_os_family == 'Suse'
-# - name: Create MapR Patch Repository for Suse
-#   zypper_repository:
-#     name: maprpatch
-#     repo: "{{ mapr_patch_url }}/redhat/"
-#     disable_gpg_check: "{{ 'no' if mapr_gpg_check == 'yes' else 'no' }}"
-#     state: present
-#   when: ansible_os_family == 'Suse' and mapr_patch_url is defined
