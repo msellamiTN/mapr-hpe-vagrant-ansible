@@ -103,7 +103,7 @@ Vagrant.configure("2") do |config|
       worker.vm.provision "file", source: "external_hosts", destination: "/tmp/hosts"
       worker.vm.provision "shell", inline: <<-SHELL
         sudo hostnamectl set-hostname worker#{i}.htc-ezmeral.local
-        echo "127.0.0.1 localhost worker#{i}.htc-ezmeral.local" >> /tmp/hosts
+        sudo echo "127.0.0.1 localhost worker#{i}.htc-ezmeral.local" >> /tmp/hosts
         sudo cp /tmp/hosts /etc/hosts
       SHELL
     end
