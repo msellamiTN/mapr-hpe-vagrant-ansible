@@ -1,4 +1,5 @@
 - name: Install MySQL
+  become: true
   hosts: ext-mysql
   roles:
     - ../roles/ext-mysql-install
@@ -6,3 +7,4 @@
   hosts: all:!ext-mysql
   roles:
     - ../roles/ext-mysql-uninstall
+  become: true

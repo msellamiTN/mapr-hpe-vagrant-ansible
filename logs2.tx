@@ -1,0 +1,19 @@
+
+PLAY [Install NFS v3] **********************************************************************************************************************************************************************************
+skipping: no hosts matched
+
+PLAY [Configure with genkeys (native-security)] ********************************************************************************************************************************************************
+
+TASK [Gathering Facts] *********************************************************************************************************************************************************************************
+ok: [mapr-master]
+
+TASK [../roles/mapr-configure-nativesecurity-secure-genkeys : Enable custom security by creating /opt/mapr/conf/.customSecure] *************************************************************************
+changed: [mapr-master] => {"changed": true, "dest": "/opt/mapr/conf/.customSecure", "gid": 5000, "group": "mapr", "mode": "0644", "owner": "mapr", "size": 0, "state": "file", "uid": 5000}
+
+TASK [../roles/mapr-configure-nativesecurity-secure-genkeys : Check if /opt/mapr/conf/cldb.key exists] *************************************************************************************************
+ok: [mapr-master] => {"changed": false, "stat": {"exists": false}}
+
+TASK [../roles/mapr-configure-nativesecurity-secure-genkeys : Configure.sh to generate keys only run on first mapr-cldb node] **************************************************************************
+
+
+

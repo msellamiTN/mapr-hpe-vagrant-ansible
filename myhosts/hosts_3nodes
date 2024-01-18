@@ -7,8 +7,8 @@
 mapr-edge   MAPR_UID=1001 MAPR_GID=1001 MAPR_USER=mapr ansible_host=127.0.0.1 ansible_port=2220 ansible_user=vagrant ansible_ssh_private_key_file=/home/user2/mapr-cluster/.ssh/id_rsa
 mapr-master   MAPR_UID=1001 MAPR_GID=1001 MAPR_USER=mapr ansible_host=127.0.0.1 ansible_port=2221 ansible_user=vagrant ansible_ssh_private_key_file=/home/user2/mapr-cluster/.ssh/id_rsa
 mapr-worker1   MAPR_UID=1001 MAPR_GID=1001 MAPR_USER=mapr ansible_host=127.0.0.1  ansible_port=2222 ansible_user=vagrant ansible_ssh_private_key_file=/home/user2/mapr-cluster/.ssh/id_rsa
-# mapr-worker2   MAPR_UID=1001 MAPR_GID=1001 MAPR_USER=mapr ansible_host=127.0.0.1  ansible_port=2223 ansible_user=vagrant ansible_ssh_private_key_file=/home/user2/mapr-cluster/.ssh/id_rsa
-# mapr-worker3   MAPR_UID=1001 MAPR_GID=1001 MAPR_USER=mapr ansible_host=127.0.0.1  ansible_port=2224 ansible_user=vagrant ansible_ssh_private_key_file=/home/user2/mapr-cluster/.ssh/id_rsa 
+mapr-worker2   MAPR_UID=1001 MAPR_GID=1001 MAPR_USER=mapr ansible_host=127.0.0.1  ansible_port=2223 ansible_user=vagrant ansible_ssh_private_key_file=/home/user2/mapr-cluster/.ssh/id_rsa
+mapr-worker3   MAPR_UID=1001 MAPR_GID=1001 MAPR_USER=mapr ansible_host=127.0.0.1  ansible_port=2224 ansible_user=vagrant ansible_ssh_private_key_file=/home/user2/mapr-cluster/.ssh/id_rsa 
 
 [unprovision]
 
@@ -16,55 +16,55 @@ mapr-worker1   MAPR_UID=1001 MAPR_GID=1001 MAPR_USER=mapr ansible_host=127.0.0.1
 mapr-edge   MAPR_UID=1001 MAPR_GID=1001 MAPR_USER=mapr ansible_host=127.0.0.1 ansible_port=2220 ansible_user=vagrant ansible_ssh_private_key_file=/home/user2/mapr-cluster/.ssh/id_rsa
 mapr-master   MAPR_UID=1001 MAPR_GID=1001 MAPR_USER=mapr ansible_host=127.0.0.1 ansible_port=2221 ansible_user=vagrant ansible_ssh_private_key_file=/home/user2/mapr-cluster/.ssh/id_rsa
 mapr-worker1   MAPR_UID=1001 MAPR_GID=1001 MAPR_USER=mapr ansible_host=127.0.0.1  ansible_port=2222 ansible_user=vagrant ansible_ssh_private_key_file=/home/user2/mapr-cluster/.ssh/id_rsa
-# mapr-worker2   MAPR_UID=1001 MAPR_GID=1001 MAPR_USER=mapr ansible_host=127.0.0.1  ansible_port=2223 ansible_user=vagrant ansible_ssh_private_key_file=/home/user2/mapr-cluster/.ssh/id_rsa
-# mapr-worker3   MAPR_UID=1001 MAPR_GID=1001 MAPR_USER=mapr ansible_host=127.0.0.1  ansible_port=2224 ansible_user=vagrant ansible_ssh_private_key_file=/home/user2/mapr-cluster/.ssh/id_rsa 
+mapr-worker2   MAPR_UID=1001 MAPR_GID=1001 MAPR_USER=mapr ansible_host=127.0.0.1  ansible_port=2223 ansible_user=vagrant ansible_ssh_private_key_file=/home/user2/mapr-cluster/.ssh/id_rsa
+mapr-worker3   MAPR_UID=1001 MAPR_GID=1001 MAPR_USER=mapr ansible_host=127.0.0.1  ansible_port=2224 ansible_user=vagrant ansible_ssh_private_key_file=/home/user2/mapr-cluster/.ssh/id_rsa 
 
 
 [mapr-core]
 mapr-edge   MAPR_UID=1001 MAPR_GID=1001 MAPR_USER=mapr ansible_host=127.0.0.1 ansible_port=2220 ansible_user=vagrant ansible_ssh_private_key_file=/home/user2/mapr-cluster/.ssh/id_rsa
 mapr-master   MAPR_UID=1001 MAPR_GID=1001 MAPR_USER=mapr ansible_host=127.0.0.1 ansible_port=2221 ansible_user=vagrant ansible_ssh_private_key_file=/home/user2/mapr-cluster/.ssh/id_rsa
 mapr-worker1   MAPR_UID=1001 MAPR_GID=1001 MAPR_USER=mapr ansible_host=127.0.0.1  ansible_port=2222 ansible_user=vagrant ansible_ssh_private_key_file=/home/user2/mapr-cluster/.ssh/id_rsa
-# mapr-worker2   MAPR_UID=1001 MAPR_GID=1001 MAPR_USER=mapr ansible_host=127.0.0.1  ansible_port=2223 ansible_user=vagrant ansible_ssh_private_key_file=/home/user2/mapr-cluster/.ssh/id_rsa
-# mapr-worker3   MAPR_UID=1001 MAPR_GID=1001 MAPR_USER=mapr ansible_host=127.0.0.1  ansible_port=2224 ansible_user=vagrant ansible_ssh_private_key_file=/home/user2/mapr-cluster/.ssh/id_rsa 
+mapr-worker2   MAPR_UID=1001 MAPR_GID=1001 MAPR_USER=mapr ansible_host=127.0.0.1  ansible_port=2223 ansible_user=vagrant ansible_ssh_private_key_file=/home/user2/mapr-cluster/.ssh/id_rsa
+mapr-worker3   MAPR_UID=1001 MAPR_GID=1001 MAPR_USER=mapr ansible_host=127.0.0.1  ansible_port=2224 ansible_user=vagrant ansible_ssh_private_key_file=/home/user2/mapr-cluster/.ssh/id_rsa 
 
 
 
 # Zookeeper
 [mapr-zookeeper]
 mapr-master   MAPR_UID=1001 MAPR_GID=1001 MAPR_USER=mapr ansible_host=127.0.0.1 ansible_port=2221 ansible_user=vagrant ansible_ssh_private_key_file=/home/user2/mapr-cluster/.ssh/id_rsa
-# mapr-worker1   MAPR_UID=1001 MAPR_GID=1001 MAPR_USER=mapr ansible_host=127.0.0.1  ansible_port=2222 ansible_user=vagrant ansible_ssh_private_key_file=/home/user2/mapr-cluster/.ssh/id_rsa
-# mapr-worker2   MAPR_UID=1001 MAPR_GID=1001 MAPR_USER=mapr ansible_host=127.0.0.1  ansible_port=2223 ansible_user=vagrant ansible_ssh_private_key_file=/home/user2/mapr-cluster/.ssh/id_rsa
+mapr-worker1   MAPR_UID=1001 MAPR_GID=1001 MAPR_USER=mapr ansible_host=127.0.0.1  ansible_port=2222 ansible_user=vagrant ansible_ssh_private_key_file=/home/user2/mapr-cluster/.ssh/id_rsa
+mapr-worker2   MAPR_UID=1001 MAPR_GID=1001 MAPR_USER=mapr ansible_host=127.0.0.1  ansible_port=2223 ansible_user=vagrant ansible_ssh_private_key_file=/home/user2/mapr-cluster/.ssh/id_rsa
 
 
 # Contains MapR FileServer (MFS)
 [mapr-fileserver]
 mapr-master   MAPR_UID=1001 MAPR_GID=1001 MAPR_USER=mapr ansible_host=127.0.0.1 ansible_port=2221 ansible_user=vagrant ansible_ssh_private_key_file=/home/user2/mapr-cluster/.ssh/id_rsa
-# mapr-worker1   MAPR_UID=1001 MAPR_GID=1001 MAPR_USER=mapr ansible_host=127.0.0.1  ansible_port=2222 ansible_user=vagrant ansible_ssh_private_key_file=/home/user2/mapr-cluster/.ssh/id_rsa
-# mapr-worker3   MAPR_UID=1001 MAPR_GID=1001 MAPR_USER=mapr ansible_host=127.0.0.1  ansible_port=2223 ansible_user=vagrant ansible_ssh_private_key_file=/home/user2/mapr-cluster/.ssh/id_rsa
+mapr-worker1   MAPR_UID=1001 MAPR_GID=1001 MAPR_USER=mapr ansible_host=127.0.0.1  ansible_port=2222 ansible_user=vagrant ansible_ssh_private_key_file=/home/user2/mapr-cluster/.ssh/id_rsa
+mapr-worker3   MAPR_UID=1001 MAPR_GID=1001 MAPR_USER=mapr ansible_host=127.0.0.1  ansible_port=2223 ansible_user=vagrant ansible_ssh_private_key_file=/home/user2/mapr-cluster/.ssh/id_rsa
 
 
 # Container Location DataBase
 [mapr-cldb]
 mapr-master   MAPR_UID=1001 MAPR_GID=1001 MAPR_USER=mapr ansible_host=127.0.0.1 ansible_port=2221 ansible_user=vagrant ansible_ssh_private_key_file=/home/user2/mapr-cluster/.ssh/id_rsa
-# mapr-worker1   MAPR_UID=1001 MAPR_GID=1001 MAPR_USER=mapr ansible_host=127.0.0.1  ansible_port=2222 ansible_user=vagrant ansible_ssh_private_key_file=/home/user2/mapr-cluster/.ssh/id_rsa
-# mapr-worker3   MAPR_UID=1001 MAPR_GID=1001 MAPR_USER=mapr ansible_host=127.0.0.1  ansible_port=2224 ansible_user=vagrant ansible_ssh_private_key_file=/home/user2/mapr-cluster/.ssh/id_rsa 
+mapr-worker1   MAPR_UID=1001 MAPR_GID=1001 MAPR_USER=mapr ansible_host=127.0.0.1  ansible_port=2222 ansible_user=vagrant ansible_ssh_private_key_file=/home/user2/mapr-cluster/.ssh/id_rsa
+mapr-worker3   MAPR_UID=1001 MAPR_GID=1001 MAPR_USER=mapr ansible_host=127.0.0.1  ansible_port=2224 ansible_user=vagrant ansible_ssh_private_key_file=/home/user2/mapr-cluster/.ssh/id_rsa 
 
 
 # Kafka API for MapR-Streams
 [mapr-kafka]
 mapr-master   MAPR_UID=1001 MAPR_GID=1001 MAPR_USER=mapr ansible_host=127.0.0.1 ansible_port=2221 ansible_user=vagrant ansible_ssh_private_key_file=/home/user2/mapr-cluster/.ssh/id_rsa
-# mapr-worker1   MAPR_UID=1001 MAPR_GID=1001 MAPR_USER=mapr ansible_host=127.0.0.1  ansible_port=2222 ansible_user=vagrant ansible_ssh_private_key_file=/home/user2/mapr-cluster/.ssh/id_rsa
-# mapr-worker2   MAPR_UID=1001 MAPR_GID=1001 MAPR_USER=mapr ansible_host=127.0.0.1  ansible_port=2223 ansible_user=vagrant ansible_ssh_private_key_file=/home/user2/mapr-cluster/.ssh/id_rsa
-# mapr-worker3   MAPR_UID=1001 MAPR_GID=1001 MAPR_USER=mapr ansible_host=127.0.0.1  ansible_port=2224 ansible_user=vagrant ansible_ssh_private_key_file=/home/user2/mapr-cluster/.ssh/id_rsa 
+mapr-worker1   MAPR_UID=1001 MAPR_GID=1001 MAPR_USER=mapr ansible_host=127.0.0.1  ansible_port=2222 ansible_user=vagrant ansible_ssh_private_key_file=/home/user2/mapr-cluster/.ssh/id_rsa
+mapr-worker2   MAPR_UID=1001 MAPR_GID=1001 MAPR_USER=mapr ansible_host=127.0.0.1  ansible_port=2223 ansible_user=vagrant ansible_ssh_private_key_file=/home/user2/mapr-cluster/.ssh/id_rsa
+mapr-worker3   MAPR_UID=1001 MAPR_GID=1001 MAPR_USER=mapr ansible_host=127.0.0.1  ansible_port=2224 ansible_user=vagrant ansible_ssh_private_key_file=/home/user2/mapr-cluster/.ssh/id_rsa 
 
 
 
 # Gateway for Streams and MapR-DB
 [mapr-gateway]
 mapr-master   MAPR_UID=1001 MAPR_GID=1001 MAPR_USER=mapr ansible_host=127.0.0.1 ansible_port=2221 ansible_user=vagrant ansible_ssh_private_key_file=/home/user2/mapr-cluster/.ssh/id_rsa
-# mapr-worker1   MAPR_UID=1001 MAPR_GID=1001 MAPR_USER=mapr ansible_host=127.0.0.1  ansible_port=2222 ansible_user=vagrant ansible_ssh_private_key_file=/home/user2/mapr-cluster/.ssh/id_rsa
-# mapr-worker2   MAPR_UID=1001 MAPR_GID=1001 MAPR_USER=mapr ansible_host=127.0.0.1  ansible_port=2223 ansible_user=vagrant ansible_ssh_private_key_file=/home/user2/mapr-cluster/.ssh/id_rsa
-# mapr-worker3   MAPR_UID=1001 MAPR_GID=1001 MAPR_USER=mapr ansible_host=127.0.0.1  ansible_port=2224 ansible_user=vagrant ansible_ssh_private_key_file=/home/user2/mapr-cluster/.ssh/id_rsa 
+mapr-worker1   MAPR_UID=1001 MAPR_GID=1001 MAPR_USER=mapr ansible_host=127.0.0.1  ansible_port=2222 ansible_user=vagrant ansible_ssh_private_key_file=/home/user2/mapr-cluster/.ssh/id_rsa
+mapr-worker2   MAPR_UID=1001 MAPR_GID=1001 MAPR_USER=mapr ansible_host=127.0.0.1  ansible_port=2223 ansible_user=vagrant ansible_ssh_private_key_file=/home/user2/mapr-cluster/.ssh/id_rsa
+mapr-worker3   MAPR_UID=1001 MAPR_GID=1001 MAPR_USER=mapr ansible_host=127.0.0.1  ansible_port=2224 ansible_user=vagrant ansible_ssh_private_key_file=/home/user2/mapr-cluster/.ssh/id_rsa 
  
 
 # MapR Control System
@@ -82,8 +82,8 @@ mapr-master   MAPR_UID=1001 MAPR_GID=1001 MAPR_USER=mapr ansible_host=127.0.0.1 
 # Contains YARN Node Manager
 [mapr-nodemanager]
 mapr-worker1   MAPR_UID=1001 MAPR_GID=1001 MAPR_USER=mapr ansible_host=127.0.0.1  ansible_port=2222 ansible_user=vagrant ansible_ssh_private_key_file=/home/user2/mapr-cluster/.ssh/id_rsa
-# mapr-worker2   MAPR_UID=1001 MAPR_GID=1001 MAPR_USER=mapr ansible_host=127.0.0.1  ansible_port=2223 ansible_user=vagrant ansible_ssh_private_key_file=/home/user2/mapr-cluster/.ssh/id_rsa
-# mapr-worker3   MAPR_UID=1001 MAPR_GID=1001 MAPR_USER=mapr ansible_host=127.0.0.1  ansible_port=2224 ansible_user=vagrant ansible_ssh_private_key_file=/home/user2/mapr-cluster/.ssh/id_rsa 
+mapr-worker2   MAPR_UID=1001 MAPR_GID=1001 MAPR_USER=mapr ansible_host=127.0.0.1  ansible_port=2223 ansible_user=vagrant ansible_ssh_private_key_file=/home/user2/mapr-cluster/.ssh/id_rsa
+mapr-worker3   MAPR_UID=1001 MAPR_GID=1001 MAPR_USER=mapr ansible_host=127.0.0.1  ansible_port=2224 ansible_user=vagrant ansible_ssh_private_key_file=/home/user2/mapr-cluster/.ssh/id_rsa 
 
 
 # Job History Server, IMPORTANT: only one
@@ -99,9 +99,9 @@ mapr-master   MAPR_UID=1001 MAPR_GID=1001 MAPR_USER=mapr ansible_host=127.0.0.1 
 # Spark on YARN
 [mapr-spark-yarn]
 mapr-master   MAPR_UID=1001 MAPR_GID=1001 MAPR_USER=mapr ansible_host=127.0.0.1 ansible_port=2221 ansible_user=vagrant ansible_ssh_private_key_file=/home/user2/mapr-cluster/.ssh/id_rsa
-# mapr-worker1   MAPR_UID=1001 MAPR_GID=1001 MAPR_USER=mapr ansible_host=127.0.0.1  ansible_port=2222 ansible_user=vagrant ansible_ssh_private_key_file=/home/user2/mapr-cluster/.ssh/id_rsa
-# mapr-worker2   MAPR_UID=1001 MAPR_GID=1001 MAPR_USER=mapr ansible_host=127.0.0.1  ansible_port=2223 ansible_user=vagrant ansible_ssh_private_key_file=/home/user2/mapr-cluster/.ssh/id_rsa
-# mapr-worker3   MAPR_UID=1001 MAPR_GID=1001 MAPR_USER=mapr ansible_host=127.0.0.1  ansible_port=2224 ansible_user=vagrant ansible_ssh_private_key_file=/home/user2/mapr-cluster/.ssh/id_rsa 
+mapr-worker1   MAPR_UID=1001 MAPR_GID=1001 MAPR_USER=mapr ansible_host=127.0.0.1  ansible_port=2222 ansible_user=vagrant ansible_ssh_private_key_file=/home/user2/mapr-cluster/.ssh/id_rsa
+mapr-worker2   MAPR_UID=1001 MAPR_GID=1001 MAPR_USER=mapr ansible_host=127.0.0.1  ansible_port=2223 ansible_user=vagrant ansible_ssh_private_key_file=/home/user2/mapr-cluster/.ssh/id_rsa
+mapr-worker3   MAPR_UID=1001 MAPR_GID=1001 MAPR_USER=mapr ansible_host=127.0.0.1  ansible_port=2224 ansible_user=vagrant ansible_ssh_private_key_file=/home/user2/mapr-cluster/.ssh/id_rsa 
 
 
 
@@ -146,9 +146,9 @@ mapr-master   MAPR_UID=1001 MAPR_GID=1001 MAPR_USER=mapr ansible_host=127.0.0.1 
 # Apache Drill
 [mapr-drill-yarn]
 mapr-master   MAPR_UID=1001 MAPR_GID=1001 MAPR_USER=mapr ansible_host=127.0.0.1 ansible_port=2221 ansible_user=vagrant ansible_ssh_private_key_file=/home/user2/mapr-cluster/.ssh/id_rsa
-# mapr-worker1   MAPR_UID=1001 MAPR_GID=1001 MAPR_USER=mapr ansible_host=127.0.0.1  ansible_port=2222 ansible_user=vagrant ansible_ssh_private_key_file=/home/user2/mapr-cluster/.ssh/id_rsa
-# mapr-worker2   MAPR_UID=1001 MAPR_GID=1001 MAPR_USER=mapr ansible_host=127.0.0.1  ansible_port=2223 ansible_user=vagrant ansible_ssh_private_key_file=/home/user2/mapr-cluster/.ssh/id_rsa
-# mapr-worker3   MAPR_UID=1001 MAPR_GID=1001 MAPR_USER=mapr ansible_host=127.0.0.1  ansible_port=2224 ansible_user=vagrant ansible_ssh_private_key_file=/home/user2/mapr-cluster/.ssh/id_rsa 
+mapr-worker1   MAPR_UID=1001 MAPR_GID=1001 MAPR_USER=mapr ansible_host=127.0.0.1  ansible_port=2222 ansible_user=vagrant ansible_ssh_private_key_file=/home/user2/mapr-cluster/.ssh/id_rsa
+mapr-worker2   MAPR_UID=1001 MAPR_GID=1001 MAPR_USER=mapr ansible_host=127.0.0.1  ansible_port=2223 ansible_user=vagrant ansible_ssh_private_key_file=/home/user2/mapr-cluster/.ssh/id_rsa
+mapr-worker3   MAPR_UID=1001 MAPR_GID=1001 MAPR_USER=mapr ansible_host=127.0.0.1  ansible_port=2224 ansible_user=vagrant ansible_ssh_private_key_file=/home/user2/mapr-cluster/.ssh/id_rsa 
 
 # Flume
 [mapr-flume]
@@ -160,8 +160,8 @@ mapr-master   MAPR_UID=1001 MAPR_GID=1001 MAPR_USER=mapr ansible_host=127.0.0.1 
 
 # HBase CLI
 [mapr-hbase-cli]
-# mapr-master   MAPR_UID=1001 MAPR_GID=1001 MAPR_USER=mapr ansible_host=127.0.0.1 ansible_port=2221 ansible_user=vagrant ansible_ssh_private_key_file=/home/user2/mapr-cluster/.ssh/id_rsa
-# mapr-worker1   MAPR_UID=1001 MAPR_GID=1001 MAPR_USER=mapr ansible_host=127.0.0.1  ansible_port=2222 ansible_user=vagrant ansible_ssh_private_key_file=/home/user2/mapr-cluster/.ssh/id_rsa
+mapr-master   MAPR_UID=1001 MAPR_GID=1001 MAPR_USER=mapr ansible_host=127.0.0.1 ansible_port=2221 ansible_user=vagrant ansible_ssh_private_key_file=/home/user2/mapr-cluster/.ssh/id_rsa
+#mapr-worker1   MAPR_UID=1001 MAPR_GID=1001 MAPR_USER=mapr ansible_host=127.0.0.1  ansible_port=2222 ansible_user=vagrant ansible_ssh_private_key_file=/home/user2/mapr-cluster/.ssh/id_rsa
 # mapr-worker2   MAPR_UID=1001 MAPR_GID=1001 MAPR_USER=mapr ansible_host=127.0.0.1  ansible_port=2223 ansible_user=vagrant ansible_ssh_private_key_file=/home/user2/mapr-cluster/.ssh/id_rsa
 # mapr-worker3   MAPR_UID=1001 MAPR_GID=1001 MAPR_USER=mapr ansible_host=127.0.0.1  ansible_port=2224 ansible_user=vagrant ansible_ssh_private_key_file=/home/user2/mapr-cluster/.ssh/id_rsa 
 
@@ -176,7 +176,7 @@ mapr-master   MAPR_UID=1001 MAPR_GID=1001 MAPR_USER=mapr ansible_host=127.0.0.1 
 
 # Hive CLI
 [mapr-hive-cli]
-# mapr-master   MAPR_UID=1001 MAPR_GID=1001 MAPR_USER=mapr ansible_host=127.0.0.1 ansible_port=2221 ansible_user=vagrant ansible_ssh_private_key_file=/home/user2/mapr-cluster/.ssh/id_rsa
+mapr-master   MAPR_UID=1001 MAPR_GID=1001 MAPR_USER=mapr ansible_host=127.0.0.1 ansible_port=2221 ansible_user=vagrant ansible_ssh_private_key_file=/home/user2/mapr-cluster/.ssh/id_rsa
 # mapr-worker1   MAPR_UID=1001 MAPR_GID=1001 MAPR_USER=mapr ansible_host=127.0.0.1  ansible_port=2222 ansible_user=vagrant ansible_ssh_private_key_file=/home/user2/mapr-cluster/.ssh/id_rsa
 # mapr-worker2   MAPR_UID=1001 MAPR_GID=1001 MAPR_USER=mapr ansible_host=127.0.0.1  ansible_port=2223 ansible_user=vagrant ansible_ssh_private_key_file=/home/user2/mapr-cluster/.ssh/id_rsa
 # mapr-worker3   MAPR_UID=1001 MAPR_GID=1001 MAPR_USER=mapr ansible_host=127.0.0.1  ansible_port=2224 ansible_user=vagrant ansible_ssh_private_key_file=/home/user2/mapr-cluster/.ssh/id_rsa 
@@ -200,9 +200,9 @@ mapr-master   MAPR_UID=1001 MAPR_GID=1001 MAPR_USER=mapr ansible_host=127.0.0.1 
 
 # HttpFS
 [mapr-httpfs]
-# mapr-worker1   MAPR_UID=1001 MAPR_GID=1001 MAPR_USER=mapr ansible_host=127.0.0.1  ansible_port=2222 ansible_user=vagrant ansible_ssh_private_key_file=/home/user2/mapr-cluster/.ssh/id_rsa
-# mapr-worker2   MAPR_UID=1001 MAPR_GID=1001 MAPR_USER=mapr ansible_host=127.0.0.1  ansible_port=2223 ansible_user=vagrant ansible_ssh_private_key_file=/home/user2/mapr-cluster/.ssh/id_rsa
-# mapr-worker3   MAPR_UID=1001 MAPR_GID=1001 MAPR_USER=mapr ansible_host=127.0.0.1  ansible_port=2224 ansible_user=vagrant ansible_ssh_private_key_file=/home/user2/mapr-cluster/.ssh/id_rsa 
+mapr-worker1   MAPR_UID=1001 MAPR_GID=1001 MAPR_USER=mapr ansible_host=127.0.0.1  ansible_port=2222 ansible_user=vagrant ansible_ssh_private_key_file=/home/user2/mapr-cluster/.ssh/id_rsa
+mapr-worker2   MAPR_UID=1001 MAPR_GID=1001 MAPR_USER=mapr ansible_host=127.0.0.1  ansible_port=2223 ansible_user=vagrant ansible_ssh_private_key_file=/home/user2/mapr-cluster/.ssh/id_rsa
+mapr-worker3   MAPR_UID=1001 MAPR_GID=1001 MAPR_USER=mapr ansible_host=127.0.0.1  ansible_port=2224 ansible_user=vagrant ansible_ssh_private_key_file=/home/user2/mapr-cluster/.ssh/id_rsa 
 
 [mapr-hue]
 mapr-edge   MAPR_UID=1001 MAPR_GID=1001 MAPR_USER=mapr ansible_host=127.0.0.1 ansible_port=2220 ansible_user=vagrant ansible_ssh_private_key_file=/home/user2/mapr-cluster/.ssh/id_rsa
@@ -233,11 +233,15 @@ mapr-master   MAPR_UID=1001 MAPR_GID=1001 MAPR_USER=mapr ansible_host=127.0.0.1 
 
 # Oozie
 [mapr-oozie]
-#node2
+mapr-master   MAPR_UID=1001 MAPR_GID=1001 MAPR_USER=mapr ansible_host=127.0.0.1 ansible_port=2221 ansible_user=vagrant ansible_ssh_private_key_file=/home/user2/mapr-cluster/.ssh/id_rsa
+mapr-worker1   MAPR_UID=1001 MAPR_GID=1001 MAPR_USER=mapr ansible_host=127.0.0.1  ansible_port=2222 ansible_user=vagrant ansible_ssh_private_key_file=/home/user2/mapr-cluster/.ssh/id_rsa
+
 
 # File Migrate Service
 [mapr-filemigrate]
-#node3
+mapr-master   MAPR_UID=1001 MAPR_GID=1001 MAPR_USER=mapr ansible_host=127.0.0.1 ansible_port=2221 ansible_user=vagrant ansible_ssh_private_key_file=/home/user2/mapr-cluster/.ssh/id_rsa
+mapr-worker1   MAPR_UID=1001 MAPR_GID=1001 MAPR_USER=mapr ansible_host=127.0.0.1  ansible_port=2222 ansible_user=vagrant ansible_ssh_private_key_file=/home/user2/mapr-cluster/.ssh/id_rsa
+
 
 [mapr-impala-server]
 #node1
@@ -270,7 +274,8 @@ mapr-master   MAPR_UID=1001 MAPR_GID=1001 MAPR_USER=mapr ansible_host=127.0.0.1 
 
 # OpenTSDB
 [mapr-opentsdb]
-#node1
+mapr-master   MAPR_UID=1001 MAPR_GID=1001 MAPR_USER=mapr ansible_host=127.0.0.1 ansible_port=2221 ansible_user=vagrant ansible_ssh_private_key_file=/home/user2/mapr-cluster/.ssh/id_rsa
+
 
 # Custom OpenTSDB, do NOT install on same node as mapr-opentsdb
 [mapr-opentsdb-custom]
@@ -278,20 +283,29 @@ mapr-master   MAPR_UID=1001 MAPR_GID=1001 MAPR_USER=mapr ansible_host=127.0.0.1 
 
 # Grafana
 [mapr-grafana]
-#node1
+mapr-master   MAPR_UID=1001 MAPR_GID=1001 MAPR_USER=mapr ansible_host=127.0.0.1 ansible_port=2221 ansible_user=vagrant ansible_ssh_private_key_file=/home/user2/mapr-cluster/.ssh/id_rsa
+
 
 # FluentD
 [mapr-fluentd:children]
-#mapr-core
+mapr-master   MAPR_UID=1001 MAPR_GID=1001 MAPR_USER=mapr ansible_host=127.0.0.1 ansible_port=2221 ansible_user=vagrant ansible_ssh_private_key_file=/home/user2/mapr-cluster/.ssh/id_rsa
+mapr-worker1   MAPR_UID=1001 MAPR_GID=1001 MAPR_USER=mapr ansible_host=127.0.0.1  ansible_port=2222 ansible_user=vagrant ansible_ssh_private_key_file=/home/user2/mapr-cluster/.ssh/id_rsa
+mapr-worker2   MAPR_UID=1001 MAPR_GID=1001 MAPR_USER=mapr ansible_host=127.0.0.1  ansible_port=2223 ansible_user=vagrant ansible_ssh_private_key_file=/home/user2/mapr-cluster/.ssh/id_rsa
+mapr-worker3   MAPR_UID=1001 MAPR_GID=1001 MAPR_USER=mapr ansible_host=127.0.0.1  ansible_port=2224 ansible_user=vagrant ansible_ssh_private_key_file=/home/user2/mapr-cluster/.ssh/id_rsa 
+
 
 # ElasticSearch
 [mapr-elasticsearch]
-#node2
-#node3
+mapr-master   MAPR_UID=1001 MAPR_GID=1001 MAPR_USER=mapr ansible_host=127.0.0.1 ansible_port=2221 ansible_user=vagrant ansible_ssh_private_key_file=/home/user2/mapr-cluster/.ssh/id_rsa
+mapr-worker1   MAPR_UID=1001 MAPR_GID=1001 MAPR_USER=mapr ansible_host=127.0.0.1  ansible_port=2222 ansible_user=vagrant ansible_ssh_private_key_file=/home/user2/mapr-cluster/.ssh/id_rsa
+mapr-worker2   MAPR_UID=1001 MAPR_GID=1001 MAPR_USER=mapr ansible_host=127.0.0.1  ansible_port=2223 ansible_user=vagrant ansible_ssh_private_key_file=/home/user2/mapr-cluster/.ssh/id_rsa
+mapr-worker3   MAPR_UID=1001 MAPR_GID=1001 MAPR_USER=mapr ansible_host=127.0.0.1  ansible_port=2224 ansible_user=vagrant ansible_ssh_private_key_file=/home/user2/mapr-cluster/.ssh/id_rsa 
+
 
 # Kibana
 [mapr-kibana]
-#node3
+mapr-master   MAPR_UID=1001 MAPR_GID=1001 MAPR_USER=mapr ansible_host=127.0.0.1 ansible_port=2221 ansible_user=vagrant ansible_ssh_private_key_file=/home/user2/mapr-cluster/.ssh/id_rsa
+
 
 
 
