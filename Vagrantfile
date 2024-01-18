@@ -54,7 +54,8 @@ Vagrant.configure("2") do |config|
     edge.vm.provision "file", source: "external_hosts", destination: "/tmp/hosts"
     edge.vm.provision "shell", inline: <<-SHELL
       sudo hostnamectl set-hostname edge.htc-ezmeral.local
-      echo "127.0.0.1 localhost edge edge.htc-ezmeral.local" | sudo tee -a /etc/hosts
+      sudo echo "127.0.0.1 localhost edge.htc-ezmeral.local" | sudo tee -a /tmp/hosts
+      sudo cp /tmp/hosts /etc/hosts
     SHELL
   end
 
@@ -77,7 +78,8 @@ Vagrant.configure("2") do |config|
     master.vm.provision "file", source: "external_hosts", destination: "/tmp/hosts"
     master.vm.provision "shell", inline: <<-SHELL
       sudo hostnamectl set-hostname master.htc-ezmeral.local
-      echo "127.0.0.1 localhost master master.htc-ezmeral.local" | sudo tee -a /etc/hosts
+      sudo echo "127.0.0.1 localhost edge.htc-ezmeral.local" | sudo tee -a /tmp/hosts
+      sudo cp /tmp/hosts /etc/hosts
     SHELL
   end
 
@@ -101,7 +103,8 @@ Vagrant.configure("2") do |config|
       worker.vm.provision "file", source: "external_hosts", destination: "/tmp/hosts"
       worker.vm.provision "shell", inline: <<-SHELL
         sudo hostnamectl set-hostname worker#{i}.htc-ezmeral.local
-        echo "127.0.0.1 localhost worker#{i} worker#{i}.htc-ezmeral.local" | sudo tee -a /etc/hosts
+        echo "127.0.0.1 localhost worker#{i}.htc-ezmeral.local" >> /tmp/hosts
+        sudo cp /tmp/hosts /etc/hosts
       SHELL
     end
   end
